@@ -3,7 +3,7 @@
 **A Biologically Grounded, Self-Organizing Spiking Neural Network**  
 **via Active Inference, Structural Plasticity, and Neuromodulatory Gating**
 
-**Project**: Timmy Neuron V2  
+**Project**: Tommy Neuron 
 **Lead Researcher**: Amellia Mendel  
 **Date**: April 2026  
 **Status**: Architecture Stabilization Phase  
