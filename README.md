@@ -11,7 +11,7 @@
 
 ## Vision
 
-Timmy V2 is a cortical-like system designed to grow, specialize, consolidate, and adapt in ways that mirror mammalian brain development and daily function. Unlike static models, it maintains a persistent self-model and uses autogenic diagnostics to manage its own representational growth.
+Tommy is a cortical-like system designed to grow, specialize, consolidate, and adapt in ways that mirror mammalian brain development and daily function. Unlike static models, it maintains a persistent self-model and uses autogenic diagnostics to manage its own representational growth.
 
 Built on the **PRAGMI** framework (Persistent Reconstructive Architecture for Generative Memory and Imagination), the architecture integrates:
 - **Active Inference & Epistemic Foraging** during the Wake Phase
