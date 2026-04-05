@@ -126,35 +126,6 @@ Executive Zone (2 blocks)     [timmy_blocks.py]
 Readout LIF + EMA + LM Head -> Logits (B, S, vocab_size)
 ```
 
----
-
-## Files
-
-| File | Lines | DOIs | What it contains |
-|---|---|---|---|
-| `timmy_neuron.py` | 579 | 25 | ATanSurrogate, AssociativeLIF with cascade amplification, NeuronConfig |
-| `timmy_encoder.py` | 278 | 9 | TemporalSpikeEncoder with dual-timescale basis and float embedding gate |
-| `timmy_attention.py` | 288 | 7 | RotaryPositionEmbedding, SpikingSynapticResonance |
-| `timmy_experts.py` | 269 | 5 | SpikingExpertGroup, SpikeDrivenMoE with cluster-based routing |
-| `timmy_memory.py` | 181 | 7 | MemoryCortex (PFC working memory with slow LIF and temporal attention) |
-| `timmy_blocks.py` | 306 | 4 | SpikingFeedForward, LeakyClamp, TimmyBlock, AuxiliarySpikeRegulator |
-| `timmy_plasticity.py` | 277 | 10 | STDPEngine (three-factor reward-modulated STDP with external reward) |
-| `timmy_model.py` | 560 | 13 | TimmyConfig, TimmyModel (full assembly with save/load/forward/stdp) |
-| `timmy_state.py` | 907 | — | Three-layer COLD/WARM/HOT checkpoint system (.soul files) |
-| `timmy_data.py` | 273 | — | DataLoader (HuggingFace, local text, pre-tokenized) |
-| `CreateTimmyArrayv3.py` | 1193 | 18 | TimmyArray ensemble: Prime + specialists, ColumnRouter, PerforantPathSymphonyBridge, clone_prime_to_specialists() |
-| `astrocytic_regulator_v3.py` | 373 | 12 | Tripartite synapse metaplasticity regulator |
-| `timmy_criticalperiodprobe.py` | — | 3 | Phase 1 convergence probe: detects critical period closure, triggers early exit |
-| `array_monitor.py` | — | 4 | Phase 2 online diagnostics: router entropy, activation frequency, subspace rank, cosine distance |
-| `train_array.py` | — | 3 | Two-phase training loop: Phase 1 (Prime only) + Phase 2 (all columns, domain-assigned data) |
-| `train_timmy.py` | — | — | Single-column training script for Prime in isolation |
-| `smoke_test.py` | — | — | End-to-end pipeline smoke test, runs on CPU in under 60 seconds |
-| `firstday.py` | — | — | Array initialization: clone Prime to all specialists, run first sleep cycle |
-| `daycycle.py` | — | — | Waking experience accumulation and synaptic tagging loop |
-| `sleep.py` | — | — | Overnight consolidation: NREM potentiation + REM specialty-directed pruning |
-| `microsleep.py` | — | — | Within-day homeostatic reset, prevents synaptic saturation |
-
----
 
 ## Biological Grounding
 
