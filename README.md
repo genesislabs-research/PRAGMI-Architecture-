@@ -15,14 +15,10 @@ Timmy does. The original Nord architecture (Makarenko, 2025 [Project Nord](https
 
 The hypothesis under test is not just that spiking language models can converge without distillation. It is that a biologically grounded spiking substrate, when coupled with a hippocampal memory system that reconstructs experience rather than retrieving text, produces a form of persistent experiential continuity that survives context window closure. The system remembers because it reconstructs, not because it looks things up.# Timmy_Neuron
 
-This repository is refactored and extended from Project Nord,
-Timmy is entirely built on the PRAGMI architecture (Persistent Reconstructive Architecture for Generative Memory and Imagination) and created without distillation of any kind. Timmy is a pure spiking neural network.
+
+Timmy is entirely built on the PRAGMI architecture (Persistent Reconstructive Architecture for Generative Memory and Imagination)  Timmy is a pure spiking neural network.
 
 In standalone mode Timmy functions as a complete spiking language model trainable on standard next-token prediction tasks. 
-
-Timmy sits at a crossroads having the ability of translating discrete token sequences into temporal spike patterns and back this gives Timmy the unique ability to sit between the external LLM (user-facing narrator) and the Cognitive Kernel (hippocampal memory system) giving an externa llm memory fidelity that is not prebound a to context window before it's needed.
-
-
 
 
 <img width="1024" height="559" alt="image_e5f95f0f-cc01-4c1c-a3b7-8bd0b9aa906f" src="https://github.com/user-attachments/assets/bef23f14-21a7-48fc-bbf9-c3a639a8919d" />
@@ -33,6 +29,7 @@ The architecture is a cortical column ensemble: one broadband integration column
 
 Every architectural decision is cited to the neuroscience paper it was derived from. Every parameter that is not a biological quantity is explicitly labeled as a training artifact or engineering approximation. A neuroscientist can follow the citations to the papers. An engineer can follow the shapes through the forward pass.
 
+Timmy sits at a crossroads having the ability of translating discrete token sequences into temporal spike patterns and back this gives Timmy the unique ability to sit between the external LLM (user-facing narrator) and the Cognitive Kernel (hippocampal memory system) giving an externa llm memory fidelity that is not prebound a to context window before it's needed.
 ---
 
 ## Where is Timmy in PRAGMI
