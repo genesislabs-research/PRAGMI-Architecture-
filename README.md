@@ -10,12 +10,12 @@ The current consensus in spiking neural network research is that training a lang
 
 Every major spiking language model in the literature either distills from a pretrained ANN, converts a trained ANN to spikes post-hoc, or modifies the spiking formalism until it is no longer biologically faithful. None trains a pure spiking neural network on language from scratch.
 
-Timmy does. The original Nord architecture (Makarenko, 2025) demonstrated that this convergence barrier could be broken. Timmy extends that proof into a full cognitive architecture with persistent episodic memory, active inference, and structural plasticity, all grounded in the neuroscience literature and all trained without a teacher.
+Timmy does. The original Nord architecture (Makarenko, 2025 [Project Nord](https://github.com/gtausa197-svg/-Project-Nord-Spiking-Neural-Network-Language) 
+) demonstrated that this convergence barrier could be broken. Timmy extends that proof into a full cognitive architecture with persistent episodic memory, active inference, and structural plasticity, all grounded in the neuroscience literature and all trained without a teacher.
 
 The hypothesis under test is not just that spiking language models can converge without distillation. It is that a biologically grounded spiking substrate, when coupled with a hippocampal memory system that reconstructs experience rather than retrieving text, produces a form of persistent experiential continuity that survives context window closure. The system remembers because it reconstructs, not because it looks things up.# Timmy_Neuron
-This repository is refactored and extended from Project Nord,[Project Nord](https://github.com/gtausa197-svg/-Project-Nord-Spiking-Neural-Network-Language) a biologically grounded spiking neural network (SNN) language model. Project Nord represents a technical milestone in the field, successfully challenging the long-standing consensus that training a language model from scratch in the spike domain was intractable.
-**A biologically grounded spiking neural network language model**
 
+This repository is refactored and extended from Project Nord,
 Timmy is entirely built on the PRAGMI architecture (Persistent Reconstructive Architecture for Generative Memory and Imagination) and created without distillation of any kind. Timmy is a pure spiking neural network.
 
 In standalone mode Timmy functions as a complete spiking language model trainable on standard next-token prediction tasks. 
