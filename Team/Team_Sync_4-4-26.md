@@ -4,9 +4,9 @@
 
 ## What This Document Is
 
-This is not a handoff summary. It is a living record of architectural decisions, their reasoning, and the state of every file in the codebase. It gets updated at the end of every session, surgically, not rewritten. The reasoning for every decision is preserved, not just the conclusion. A new Claude instance reading this document should be able to pick up mid-thought without re-litigating settled ground.
+This is not a handoff summary. It is a living record of architectural decisions, their reasoning, and the state of every file in the codebase. It gets updated at the end of every session, surgically, not rewritten. The reasoning for every decision is preserved, not just the conclusion. Anyone reading this document should be able to pick up without re-litigating settled ground.
 
-Chronology rule: when extractions contradict each other, the more recent one wins. When anything contradicts decisions made in the April 5 2026 Claude session, that session wins. Tommy is always superseded by Timmy, no exceptions, do not ask again.
+Chronology rule: when extractions contradict each other, the more recent one wins. When anything contradicts decisions made the newest wins. 
 
 ---
 
