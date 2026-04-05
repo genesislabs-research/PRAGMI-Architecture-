@@ -1,4 +1,18 @@
-# Timmy_Neuron
+Timmy
+A pure spiking neural network language model trained from scratch. No distillation. No conversion. No pretrained teacher.
+
+Genesis Labs Research | Amellia Mendel | 2026
+
+Built on the PRAGMI architecture (Persistent Reconstructive Architecture for Generative Memory and Imagination).
+
+The Claim
+The current consensus in spiking neural network research is that training a language model from scratch in the spike domain is intractable. SpikeBERT (Lv et al., 2024) reported that direct training failed to converge due to "self-accumulating dynamics" and resorted to two-stage knowledge distillation from BERT. SpikingBERT (Bal & Sengupta, 2024) concluded that "the additional overheads of training a spiking LM from scratch prompted us to seek out more proficient approaches" and used implicit differentiation with BERT as teacher. SpikeGPT (Zhu et al., 2024) replaced multi-head self-attention entirely to reduce computational complexity. SpikeLM (Xing et al., 2024) abandoned binary {0,1} spiking altogether in favor of elastic multi-level activation.
+
+Every major spiking language model in the literature either distills from a pretrained ANN, converts a trained ANN to spikes post-hoc, or modifies the spiking formalism until it is no longer biologically faithful. None trains a pure spiking neural network on language from scratch.
+
+Timmy does. The original Nord architecture (Makarenko, 2025) demonstrated that this convergence barrier could be broken. Timmy v2 extends that proof into a full cognitive architecture with persistent episodic memory, active inference, and structural plasticity, all grounded in the neuroscience literature and all trained without a teacher.
+
+The hypothesis under test is not just that spiking language models can converge without distillation. It is that a biologically grounded spiking substrate, when coupled with a hippocampal memory system that reconstructs experience rather than retrieving text, produces a form of persistent experiential continuity that survives context window closure. The system remembers because it reconstructs, not because it looks things up.# Timmy_Neuron
 This repository is refactored and extended from Project Nord,[Project Nord](https://github.com/gtausa197-svg/-Project-Nord-Spiking-Neural-Network-Language) a biologically grounded spiking neural network (SNN) language model. Project Nord represents a technical milestone in the field, successfully challenging the long-standing consensus that training a language model from scratch in the spike domain was intractable.
 **A biologically grounded spiking neural network language model**
 
