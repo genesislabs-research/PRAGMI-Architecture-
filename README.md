@@ -23,14 +23,14 @@ In standalone mode Timmy functions as a complete spiking language model trainabl
 
 
 The architecture is a cortical column ensemble: one broadband integration column (Prime) plus five specialist columns, all structurally identical, all initialized from the same trained weights. Specialization emerges through sleep-cycle synaptic pruning and consolidation after deployment. The system employs a Thousand Brains approach where Prime coordinates the specialists and all columns project to a shared Cognitive Kernel through independent low-rank communication subspaces.
-
+![1000016034](https://github.com/user-attachments/assets/4faffefd-2556-41c8-b86d-9d5457d25272)
 Every architectural decision is cited to the neuroscience paper it was derived from. Every parameter that is not a biological quantity is explicitly labeled as a training artifact or engineering approximation. A neuroscientist can follow the citations to the papers. An engineer can follow the shapes through the forward pass.
 
 Timmy sits at a crossroads having the ability of translating discrete token sequences into temporal spike patterns and back this gives Timmy the unique ability to sit between the external LLM (user-facing narrator) and the Cognitive Kernel (hippocampal memory system) giving an externa llm memory fidelity that is not prebound a to context window before it's needed.
 
 <img width="1024" height="559" alt="image_e5f95f0f-cc01-4c1c-a3b7-8bd0b9aa906f" src="https://github.com/user-attachments/assets/bef23f14-21a7-48fc-bbf9-c3a639a8919d" />
 
-![1000016034](https://github.com/user-attachments/assets/4faffefd-2556-41c8-b86d-9d5457d25272)
+
 
 ---
 
