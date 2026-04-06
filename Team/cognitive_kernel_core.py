@@ -1,5 +1,5 @@
 """
-cognitive_kernel_core.py
+cognitive_kernel_base_for_testing_c.py
 Cognitive Kernel: Hippocampal Memory System with 3D Neuron Coordinates
 
 BIOLOGICAL GROUNDING
