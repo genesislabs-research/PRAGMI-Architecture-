@@ -143,4 +143,4 @@ Should the Timmy column files (timmy_neuron.py, timmy_encoder.py, timmy_attentio
 | small_core_train.py | Team/ (pending upload) | Complete, under review | 18/18 pass |
 | cognitive_kernel_trainer.py | Team/ | Complete | Standalone |
 
-*Genesis Labs Research, 2026*  Amellia Mendel / LM Adler 
+*Genesis Labs Research, 2026*  Amellia Mendel / LM Adler / Xin yi Lee 
