@@ -1,9 +1,7 @@
-# PRAGMI / Timmy — Team Sync Ai generated 4_4_26 - Amellia Mendel
+# PRAGMI / Timmy — Team Sync Ai generated 4_4_26 
 
-## What This Document Is
-
-
-This is not a handoff summary. It is a living record of architectural decisions, their reasoning, and the state of every file in the codebase. It gets updated at the end of every session, surgically, not rewritten. The reasoning for every decision is preserved, not just the conclusion. Anyone reading this document should be able to pick up without re-litigating settled ground.
+## living record of architectural decisions, their reasoning, and the state of every file in the codebase
+every working session one is created by AI summary which {in theory} should capture the reasoning for every decision {hopefully} not just the conclusion. Anyone reading this document should be able to pick up without re-litigating settled ground.
 
 Chronology rule: when extractions contradict each other, the more recent one wins. When anything contradicts decisions made the newest wins. 
 
@@ -157,3 +155,4 @@ When resuming a checkpoint that has N mature specialists, how to handle load_sta
 Should specialist_ages buffer (1D tensor incrementing each wake cycle, appending 0 when ExpandExpert spawns) live in CreateTimmyArray or in ExpandExpert. Not yet decided.
 
 ---
+- Amellia Mendel / LM Adler 
