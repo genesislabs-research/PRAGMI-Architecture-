@@ -1,6 +1,6 @@
 
 
-## # PRAGMI / Timmy — Team Sync Ai generated (obviously) 4_4_26 
+## PRAGMI / Timmy — Team Sync Ai generated (obviously) 4_4_26 
 
 ## living record of architectural decisions, their reasoning, and the state of every file in the codebase
 every working session one is created by AI summary which {in theory} should capture the reasoning for every decision {hopefully} not just the conclusion. Anyone reading this document should be able to pick up without re-litigating settled ground or wonder why a decision was made.
