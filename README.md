@@ -152,7 +152,44 @@ Readout LIF + EMA + LM Head -> Logits (B, S, vocab_size)
 | Subspace effective rank | Representational dimensionality | Roy & Vetterli (2007). DOI: {To be added later.} |
 
 ---
+## Cross-Referencing Biological and Computational Foundations
 
+Timmy is designed at the intersection of computational neuroscience and neuromorphic engineering. The following core references provide a clear mapping between biological principles and their practical implementation in code.
+
+### Primary Neuroscience Reference
+**Gerstner, W. & Kistler, W.M. (2002). *Spiking Neuron Models: Single Neurons, Populations, Plasticity*. Cambridge University Press.**  
+An updated and freely available version is *Neuronal Dynamics: From single neurons to networks and models of cognition* by Gerstner et al. (2014), available at https://neuronaldynamics.epfl.ch.
+
+This text serves as the foundational reference for the neuron models, synaptic dynamics, and plasticity rules used throughout the architecture. Relevant sections include:
+- Leaky Integrate-and-Fire dynamics and variants (Chapters 4–5 and corresponding sections in *Neuronal Dynamics*)
+- Spike-Timing-Dependent Plasticity (STDP) and three-factor learning rules (Chapter 10 and *Neuronal Dynamics* Chapter 19)
+- Population coding and network-level behavior
+
+### Engineering and Implementation Reference
+**Eliasmith, C. & Anderson, C.H. (2003). *Neural Engineering: Computation, Representation, and Dynamics in Neurobiological Systems*. MIT Press.**
+
+This volume provides practical guidance for translating neurobiological principles into scalable computational models, vector representations, and dynamical systems suitable for simulation and deployment. It serves as a bridge from biological grounding to efficient code-level realizations in frameworks such as PyTorch.
+
+Additional practical resources for implementation include the snnTorch library (gradient-based training of spiking neural networks) and documentation from frameworks such as Brian2 and Lava.
+
+### Usage in This Codebase
+- Biological concepts are cited with their primary neuroscience references and DOIs in the table below.
+- Engineering approximations (such as surrogate gradients, low-rank subspaces, and EMA readouts) are explicitly labeled as training artifacts.
+- The implementation in files such as `timmy_neuron.py`, `timmy_blocks.py`, and the STDP engine follows the mappings established in the references above.
+
+## Biological Grounding
+
+| Component                    | Biological Analog                              | Engineering / Implementation Term                                      | Primary Neuroscience Reference                  | Computational Reference |
+|------------------------------|------------------------------------------------|------------------------------------------------------------------------|-------------------------------------------------|--------------------------|
+| TemporalSpikeEncoder        | Thalamocortical relay                         | Multi-scale temporal current injection (gamma + theta basis; gated float embedding fusion) | Sherman & Guillery (2002)                      | Gerstner & Kistler (2002, Ch. 4–5); Eliasmith & Anderson (2003) |
+| AssociativeLIF              | Cortical pyramidal cell                       | Leaky Integrate-and-Fire (LIF) neuron with cascade amplification and persistent membrane state | Gerstner et al. (2014)                         | Gerstner & Kistler (2002, Ch. 4); *Neuronal Dynamics* Ch. 6–8; Eliasmith & Anderson (2003, Ch. 3–4) |
+| Cascade amplification       | Minicolumn lateral excitation                 | Local recurrent excitation within spiking blocks                       | Mountcastle (1997)                             | Gerstner & Kistler (population coding sections) |
+| ATanSurrogate               | — (training artifact only)                    | Surrogate gradient for differentiable spiking backpropagation          | Neftci et al. (2019)                           | snnTorch implementation |
+| SpikeDrivenMoE              | Association cortex specialization             | Sparse, cluster-based Mixture-of-Experts with spike-driven routing and load balancing | Felleman & Van Essen (1991)                    | Gerstner & Kistler (network chapters) |
+| MemoryCortex                | PFC delay-period persistent activity          | Slow-decay LIF working memory buffer + multi-head temporal attention readout | Fuster (1973)                                  | Gerstner & Kistler (*Neuronal Dynamics* Ch. 17) |
+| STDPEngine                  | Three-factor reward-modulated plasticity      | Reward-modulated STDP (three-factor rule) with external reward scalar  | Bi & Poo (1998)                                | Gerstner & Kistler (Ch. 10 / *Neuronal Dynamics* Ch. 19.4); Eliasmith & Anderson (2003) |
+| TimmyArray columns          | Cortical column ensemble                      | Modular ensemble of identical SNN columns (Prime as broadband router); specialization via experience-driven pruning | Mountcastle (1997); Hawkins et al. (2019)      | Gerstner & Kistler (population sections); Eliasmith & Anderson (2003) |
+| PerforantPathSymphonyBridge | Communication subspace                        | 64-dimensional low-rank projection manifold for inter-column and kernel communication | Semedo et al. (2019)                           | Eliasmith & Anderson (2003, transformation principles) |
 ## Quick Start (Standalone Single Column)
 
 ```python
