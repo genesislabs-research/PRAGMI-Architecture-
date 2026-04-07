@@ -1,9 +1,9 @@
-# PRAGMI / Timmy — Team Sync Ai generated 4_7_26 - Amellia Mendel
+# PRAGMI / Timmy — Team Sync Ai generated 4_7_26 - 
 
-## What This Document Is
+## # PRAGMI / Timmy — Team Sync Ai generated (obviously) 4_4_26 
 
-
-This is not a handoff summary. It is a living record of architectural decisions, their reasoning, and the state of every file in the codebase. It gets updated at the end of every session, surgically, not rewritten. The reasoning for every decision is preserved, not just the conclusion. Anyone reading this document should be able to pick up without re-litigating settled ground.
+## living record of architectural decisions, their reasoning, and the state of every file in the codebase
+every working session one is created by AI summary which {in theory} should capture the reasoning for every decision {hopefully} not just the conclusion. Anyone reading this document should be able to pick up without re-litigating settled ground or wonder why a decision was made.
 
 Chronology rule: when extractions contradict each other, the more recent one wins. When anything contradicts decisions made the newest wins. This document supersedes Team_Sync_4-4-26.md on any point of conflict.
 
@@ -143,4 +143,4 @@ Should the Timmy column files (timmy_neuron.py, timmy_encoder.py, timmy_attentio
 | small_core_train.py | Team/ (pending upload) | Complete, Opus reviewed | 18/18 pass |
 | cognitive_kernel_trainer.py | Team/ | Complete | Standalone |
 
-*Genesis Labs Research, 2026*
+*Genesis Labs Research, 2026*  Amellia Mendel / LM Adler 
