@@ -32,7 +32,60 @@ Timmy sits at a crossroads having the ability of translating discrete token sequ
 
 <img width="1024" height="559" alt="image_e5f95f0f-cc01-4c1c-a3b7-8bd0b9aa906f" src="https://github.com/user-attachments/assets/bef23f14-21a7-48fc-bbf9-c3a639a8919d" />
 
+```
 
+
+## Biological Grounding
+
+| Component | Biological analog | Primary reference |
+|---|---|---|
+| TemporalSpikeEncoder | Thalamocortical relay | Sherman & Guillery (2002). DOI: 10.1098/rstb.2002.1161 |
+| AssociativeLIF | Cortical pyramidal cell | Gerstner et al. (2014). DOI: 10.1017/CBO9781107447615 |
+| Cascade amplification | Minicolumn lateral excitation | Mountcastle (1997). DOI: 10.1093/brain/120.4.701 |
+| ATanSurrogate | None — training artifact only | Neftci et al. (2019). DOI: 10.1109/MSP.2019.2931595 |
+| SpikingSynapticResonance | Communication through coherence | Fries (2005). DOI: 10.1016/j.tics.2005.08.011 |
+| SpikeDrivenMoE | Association cortex specialization | Felleman & Van Essen (1991). DOI: 10.1093/cercor/1.1.1 |
+| MemoryCortex | PFC delay-period persistent activity | Fuster (1973). DOI: 10.1152/jn.1973.36.1.61 |
+| STDPEngine | Three-factor reward-modulated plasticity | Bi & Poo (1998). DOI: 10.1523/JNEUROSCI.18-24-10464.1998 |
+| Refractory period | Na⁺ channel inactivation | Hodgkin & Huxley (1952). DOI: 10.1113/jphysiol.1952.sp004764 |
+| TimmyArray columns | Cortical column ensemble | Mountcastle (1997). DOI: 10.1093/brain/120.4.701 |
+| clone_prime_to_specialists() | Radial unit developmental template | Rakic (1988). DOI: 10.1126/science.3291116 |
+| Column specialization | Sleep-driven experience-dependent plasticity | Tononi & Cirelli (2003). DOI: 10.1093/brain/awg100 |
+| Sleep pruning | Synaptic tagging and capture, REM refinement | Seibt & Frank (2019). DOI: 10.3389/fnsys.2019.00002 |
+| PerforantPathSymphonyBridge | Communication subspace | Semedo et al. (2019). DOI: 10.1016/j.neuron.2019.01.026 |
+| ColumnRouter | Long-range horizontal coordination | See et al. (2018). DOI: 10.7554/eLife.35587 |
+| AstrocyticRegulator | Tripartite synapse metaplasticity | Araque et al. (1999). DOI: 10.1016/S0166-2236(98)01349-6 |
+| Critical period closure | Experience-dependent threshold stabilization | Huang et al. (2022). DOI: 10.1007/s12021-022-09576-5 |
+| Subspace effective rank | Representational dimensionality | Roy & Vetterli (2007). DOI: {To be added later.} |
+
+---
+
+
+```
+## Engineering Implementation Reference
+
+An engineer can read this table independently. It shows the exact code-level term used in the repository and the peer-reviewed engineering book or major computational reference that justifies the design choice.
+
+| Component                    | Engineering / Implementation Term                                      | Primary Engineering Reference |
+|------------------------------|------------------------------------------------------------------------|-------------------------------|
+| TemporalSpikeEncoder        | Multi-scale temporal current injection (fast gamma-band + slow theta-band bases; optional gated float embedding fusion) | Eliasmith & Anderson (2003). *Neural Engineering*, Ch. 3–4 (temporal encoding and multi-scale representations) |
+| AssociativeLIF              | Leaky Integrate-and-Fire neuron with cascade amplification and persistent membrane state across sequence chunks | Eliasmith & Anderson (2003). *Neural Engineering*, Ch. 4–6 (LIF dynamics and population-level persistence) |
+| Cascade amplification       | Local recurrent excitation / residual connections within spiking blocks | Eliasmith & Anderson (2003). *Neural Engineering* (recurrent coupling for amplification) |
+| ATanSurrogate               | Surrogate gradient (atan) for backpropagation-through-time in spiking networks | Neftci et al. (2019). IEEE Signal Processing Magazine (surrogate gradient methods for SNN training) |
+| SpikingSynapticResonance    | Phase synchronization for efficient long-range signaling               | Eliasmith & Anderson (2003). *Neural Engineering* (dynamical synchronization in population codes) |
+| SpikeDrivenMoE              | Sparse cluster-based Mixture-of-Experts with spike-driven routing and load-balanced expert dispatch | Abdallah (2024). *Neuromorphic Computing Principles and Organization* (sparse expert routing in scalable SNN hardware) |
+| MemoryCortex                | Slow-decay LIF working memory buffer + multi-head temporal attention readout | Eliasmith & Anderson (2003). *Neural Engineering*, Ch. 7–8 (persistent activity and working memory dynamics) |
+| STDPEngine                  | Reward-modulated STDP (three-factor rule) with external reward scalar input | Eshraghian et al. (snnTorch framework, 2022) + Eliasmith & Anderson (2003) (plasticity implementation in large-scale models) |
+| Refractory period           | Hard/soft refractory period in neuron dynamics (prevents immediate re-firing) | Eliasmith & Anderson (2003). *Neural Engineering* (realistic neuron refractory modeling) |
+| TimmyArray columns          | Modular ensemble of identical SNN columns (Prime as broadband router); specialization via experience-driven pruning | Abdallah (2024). *Neuromorphic Computing Principles and Organization* (modular column-style SNN architectures) |
+| clone_prime_to_specialists() | Weight cloning + domain-biased fine-tuning + offline pruning          | Eliasmith & Anderson (2003). *Neural Engineering* (ensemble initialization and specialization) |
+| Column specialization       | Experience-driven synaptic consolidation + magnitude-based pruning during sleep cycles | Abdallah (2024). *Neuromorphic Computing Principles and Organization* (offline pruning for specialization in hardware SNNs) |
+| Sleep pruning               | Offline synaptic consolidation and pruning phase                       | Abdallah (2024). *Neuromorphic Computing Principles and Organization* (sleep-like refinement in neuromorphic systems) |
+| PerforantPathSymphonyBridge | 64-dim low-rank projection / communication manifold (independent subspaces per column) | Eliasmith & Anderson (2003). *Neural Engineering* (low-rank transformations between neural populations) |
+| ColumnRouter                | Low-rank linear router projecting to shared kernel subspace            | Eliasmith & Anderson (2003). *Neural Engineering* (efficient long-range communication via low-rank projections) |
+| AstrocyticRegulator         | Metaplasticity regulation layer (optional scaling of learning rates)   | Abdallah (2024). *Neuromorphic Computing Principles and Organization* (auxiliary regulation in large SNN systems) |
+| Critical period closure     | Stability monitor for router entropy, load balance, and threshold convergence | Rathi et al. (2023). ACM Computing Surveys (critical-period-like convergence in SNN training pipelines) |
+| Subspace effective rank     | Effective dimensionality tracking of communication subspaces           | Eliasmith & Anderson (2003). *Neural Engineering* (representational dimensionality in neural ensembles) |
 
 ---
 
@@ -125,33 +178,9 @@ Executive Zone (2 blocks)     [timmy_blocks.py]
     |
     v
 Readout LIF + EMA + LM Head -> Logits (B, S, vocab_size)
-```
 
+## Quick Start (TimmyArray)
 
-## Biological Grounding
-
-| Component | Biological analog | Primary reference |
-|---|---|---|
-| TemporalSpikeEncoder | Thalamocortical relay | Sherman & Guillery (2002). DOI: 10.1098/rstb.2002.1161 |
-| AssociativeLIF | Cortical pyramidal cell | Gerstner et al. (2014). DOI: 10.1017/CBO9781107447615 |
-| Cascade amplification | Minicolumn lateral excitation | Mountcastle (1997). DOI: 10.1093/brain/120.4.701 |
-| ATanSurrogate | None — training artifact only | Neftci et al. (2019). DOI: 10.1109/MSP.2019.2931595 |
-| SpikingSynapticResonance | Communication through coherence | Fries (2005). DOI: 10.1016/j.tics.2005.08.011 |
-| SpikeDrivenMoE | Association cortex specialization | Felleman & Van Essen (1991). DOI: 10.1093/cercor/1.1.1 |
-| MemoryCortex | PFC delay-period persistent activity | Fuster (1973). DOI: 10.1152/jn.1973.36.1.61 |
-| STDPEngine | Three-factor reward-modulated plasticity | Bi & Poo (1998). DOI: 10.1523/JNEUROSCI.18-24-10464.1998 |
-| Refractory period | Na⁺ channel inactivation | Hodgkin & Huxley (1952). DOI: 10.1113/jphysiol.1952.sp004764 |
-| TimmyArray columns | Cortical column ensemble | Mountcastle (1997). DOI: 10.1093/brain/120.4.701 |
-| clone_prime_to_specialists() | Radial unit developmental template | Rakic (1988). DOI: 10.1126/science.3291116 |
-| Column specialization | Sleep-driven experience-dependent plasticity | Tononi & Cirelli (2003). DOI: 10.1093/brain/awg100 |
-| Sleep pruning | Synaptic tagging and capture, REM refinement | Seibt & Frank (2019). DOI: 10.3389/fnsys.2019.00002 |
-| PerforantPathSymphonyBridge | Communication subspace | Semedo et al. (2019). DOI: 10.1016/j.neuron.2019.01.026 |
-| ColumnRouter | Long-range horizontal coordination | See et al. (2018). DOI: 10.7554/eLife.35587 |
-| AstrocyticRegulator | Tripartite synapse metaplasticity | Araque et al. (1999). DOI: 10.1016/S0166-2236(98)01349-6 |
-| Critical period closure | Experience-dependent threshold stabilization | Huang et al. (2022). DOI: 10.1007/s12021-022-09576-5 |
-| Subspace effective rank | Representational dimensionality | Roy & Vetterli (2007). DOI: {To be added later.} |
-
----
 ## Cross-Referencing Biological and Computational Foundations
 
 Timmy is designed at the intersection of computational neuroscience and neuromorphic engineering. The following core references provide a clear mapping between biological principles and their practical implementation in code.
@@ -208,32 +237,6 @@ token_ids = torch.randint(0, cfg.vocab_size, (2, 128))
 logits, stats = model(token_ids)
 print(f"Logits: {logits.shape}")               # (2, 128, 128256)
 print(f"Avg spike rate: {stats['avg_spike_rate']:.4f}")
-```
-## Engineering Implementation Reference
-
-An engineer can read this table independently. It shows the exact code-level term used in the repository and the peer-reviewed engineering book or major computational reference that justifies the design choice.
-
-| Component                    | Engineering / Implementation Term                                      | Primary Engineering Reference |
-|------------------------------|------------------------------------------------------------------------|-------------------------------|
-| TemporalSpikeEncoder        | Multi-scale temporal current injection (fast gamma-band + slow theta-band bases; optional gated float embedding fusion) | Eliasmith & Anderson (2003). *Neural Engineering*, Ch. 3–4 (temporal encoding and multi-scale representations) |
-| AssociativeLIF              | Leaky Integrate-and-Fire neuron with cascade amplification and persistent membrane state across sequence chunks | Eliasmith & Anderson (2003). *Neural Engineering*, Ch. 4–6 (LIF dynamics and population-level persistence) |
-| Cascade amplification       | Local recurrent excitation / residual connections within spiking blocks | Eliasmith & Anderson (2003). *Neural Engineering* (recurrent coupling for amplification) |
-| ATanSurrogate               | Surrogate gradient (atan) for backpropagation-through-time in spiking networks | Neftci et al. (2019). IEEE Signal Processing Magazine (surrogate gradient methods for SNN training) |
-| SpikingSynapticResonance    | Phase synchronization for efficient long-range signaling               | Eliasmith & Anderson (2003). *Neural Engineering* (dynamical synchronization in population codes) |
-| SpikeDrivenMoE              | Sparse cluster-based Mixture-of-Experts with spike-driven routing and load-balanced expert dispatch | Abdallah (2024). *Neuromorphic Computing Principles and Organization* (sparse expert routing in scalable SNN hardware) |
-| MemoryCortex                | Slow-decay LIF working memory buffer + multi-head temporal attention readout | Eliasmith & Anderson (2003). *Neural Engineering*, Ch. 7–8 (persistent activity and working memory dynamics) |
-| STDPEngine                  | Reward-modulated STDP (three-factor rule) with external reward scalar input | Eshraghian et al. (snnTorch framework, 2022) + Eliasmith & Anderson (2003) (plasticity implementation in large-scale models) |
-| Refractory period           | Hard/soft refractory period in neuron dynamics (prevents immediate re-firing) | Eliasmith & Anderson (2003). *Neural Engineering* (realistic neuron refractory modeling) |
-| TimmyArray columns          | Modular ensemble of identical SNN columns (Prime as broadband router); specialization via experience-driven pruning | Abdallah (2024). *Neuromorphic Computing Principles and Organization* (modular column-style SNN architectures) |
-| clone_prime_to_specialists() | Weight cloning + domain-biased fine-tuning + offline pruning          | Eliasmith & Anderson (2003). *Neural Engineering* (ensemble initialization and specialization) |
-| Column specialization       | Experience-driven synaptic consolidation + magnitude-based pruning during sleep cycles | Abdallah (2024). *Neuromorphic Computing Principles and Organization* (offline pruning for specialization in hardware SNNs) |
-| Sleep pruning               | Offline synaptic consolidation and pruning phase                       | Abdallah (2024). *Neuromorphic Computing Principles and Organization* (sleep-like refinement in neuromorphic systems) |
-| PerforantPathSymphonyBridge | 64-dim low-rank projection / communication manifold (independent subspaces per column) | Eliasmith & Anderson (2003). *Neural Engineering* (low-rank transformations between neural populations) |
-| ColumnRouter                | Low-rank linear router projecting to shared kernel subspace            | Eliasmith & Anderson (2003). *Neural Engineering* (efficient long-range communication via low-rank projections) |
-| AstrocyticRegulator         | Metaplasticity regulation layer (optional scaling of learning rates)   | Abdallah (2024). *Neuromorphic Computing Principles and Organization* (auxiliary regulation in large SNN systems) |
-| Critical period closure     | Stability monitor for router entropy, load balance, and threshold convergence | Rathi et al. (2023). ACM Computing Surveys (critical-period-like convergence in SNN training pipelines) |
-| Subspace effective rank     | Effective dimensionality tracking of communication subspaces           | Eliasmith & Anderson (2003). *Neural Engineering* (representational dimensionality in neural ensembles) |
-## Quick Start (TimmyArray)
 
 ```python
 import torch
