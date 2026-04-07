@@ -209,7 +209,30 @@ logits, stats = model(token_ids)
 print(f"Logits: {logits.shape}")               # (2, 128, 128256)
 print(f"Avg spike rate: {stats['avg_spike_rate']:.4f}")
 ```
+## Engineering Implementation Reference
 
+An engineer can read this table independently. It shows the exact code-level term used in the repository and the peer-reviewed engineering book or major computational reference that justifies the design choice.
+
+| Component                    | Engineering / Implementation Term                                      | Primary Engineering Reference |
+|------------------------------|------------------------------------------------------------------------|-------------------------------|
+| TemporalSpikeEncoder        | Multi-scale temporal current injection (fast gamma-band + slow theta-band bases; optional gated float embedding fusion) | Eliasmith & Anderson (2003). *Neural Engineering*, Ch. 3–4 (temporal encoding and multi-scale representations) |
+| AssociativeLIF              | Leaky Integrate-and-Fire neuron with cascade amplification and persistent membrane state across sequence chunks | Eliasmith & Anderson (2003). *Neural Engineering*, Ch. 4–6 (LIF dynamics and population-level persistence) |
+| Cascade amplification       | Local recurrent excitation / residual connections within spiking blocks | Eliasmith & Anderson (2003). *Neural Engineering* (recurrent coupling for amplification) |
+| ATanSurrogate               | Surrogate gradient (atan) for backpropagation-through-time in spiking networks | Neftci et al. (2019). IEEE Signal Processing Magazine (surrogate gradient methods for SNN training) |
+| SpikingSynapticResonance    | Phase synchronization for efficient long-range signaling               | Eliasmith & Anderson (2003). *Neural Engineering* (dynamical synchronization in population codes) |
+| SpikeDrivenMoE              | Sparse cluster-based Mixture-of-Experts with spike-driven routing and load-balanced expert dispatch | Abdallah (2024). *Neuromorphic Computing Principles and Organization* (sparse expert routing in scalable SNN hardware) |
+| MemoryCortex                | Slow-decay LIF working memory buffer + multi-head temporal attention readout | Eliasmith & Anderson (2003). *Neural Engineering*, Ch. 7–8 (persistent activity and working memory dynamics) |
+| STDPEngine                  | Reward-modulated STDP (three-factor rule) with external reward scalar input | Eshraghian et al. (snnTorch framework, 2022) + Eliasmith & Anderson (2003) (plasticity implementation in large-scale models) |
+| Refractory period           | Hard/soft refractory period in neuron dynamics (prevents immediate re-firing) | Eliasmith & Anderson (2003). *Neural Engineering* (realistic neuron refractory modeling) |
+| TimmyArray columns          | Modular ensemble of identical SNN columns (Prime as broadband router); specialization via experience-driven pruning | Abdallah (2024). *Neuromorphic Computing Principles and Organization* (modular column-style SNN architectures) |
+| clone_prime_to_specialists() | Weight cloning + domain-biased fine-tuning + offline pruning          | Eliasmith & Anderson (2003). *Neural Engineering* (ensemble initialization and specialization) |
+| Column specialization       | Experience-driven synaptic consolidation + magnitude-based pruning during sleep cycles | Abdallah (2024). *Neuromorphic Computing Principles and Organization* (offline pruning for specialization in hardware SNNs) |
+| Sleep pruning               | Offline synaptic consolidation and pruning phase                       | Abdallah (2024). *Neuromorphic Computing Principles and Organization* (sleep-like refinement in neuromorphic systems) |
+| PerforantPathSymphonyBridge | 64-dim low-rank projection / communication manifold (independent subspaces per column) | Eliasmith & Anderson (2003). *Neural Engineering* (low-rank transformations between neural populations) |
+| ColumnRouter                | Low-rank linear router projecting to shared kernel subspace            | Eliasmith & Anderson (2003). *Neural Engineering* (efficient long-range communication via low-rank projections) |
+| AstrocyticRegulator         | Metaplasticity regulation layer (optional scaling of learning rates)   | Abdallah (2024). *Neuromorphic Computing Principles and Organization* (auxiliary regulation in large SNN systems) |
+| Critical period closure     | Stability monitor for router entropy, load balance, and threshold convergence | Rathi et al. (2023). ACM Computing Surveys (critical-period-like convergence in SNN training pipelines) |
+| Subspace effective rank     | Effective dimensionality tracking of communication subspaces           | Eliasmith & Anderson (2003). *Neural Engineering* (representational dimensionality in neural ensembles) |
 ## Quick Start (TimmyArray)
 
 ```python
