@@ -155,4 +155,4 @@ When resuming a checkpoint that has N mature specialists, how to handle load_sta
 Should specialist_ages buffer (1D tensor incrementing each wake cycle, appending 0 when ExpandExpert spawns) live in CreateTimmyArray or in ExpandExpert. Not yet decided.
 
 ---
-- Amellia Mendel / LM Adler 
+- Amellia Mendel / LM Adler / Xin yi
