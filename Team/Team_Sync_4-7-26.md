@@ -140,7 +140,7 @@ Should the Timmy column files (timmy_neuron.py, timmy_encoder.py, timmy_attentio
 | neuromodulator_broadcast_p.py | Core/ | Complete | 14/14 pass |
 | epistemic_selector_t.py | Teaching/ | Complete | 7/7 pass |
 | epistemic_selector_p.py | Core/ | Complete | 7/7 pass |
-| small_core_train.py | Team/ (pending upload) | Complete, Opus reviewed | 18/18 pass |
+| small_core_train.py | Team/ (pending upload) | Complete, under review | 18/18 pass |
 | cognitive_kernel_trainer.py | Team/ | Complete | Standalone |
 
 *Genesis Labs Research, 2026*  Amellia Mendel / LM Adler 
