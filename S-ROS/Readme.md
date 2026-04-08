@@ -1,7 +1,9 @@
 # S-ROS (Spiking Robot Operating System)
 ## Project Goals
 Prove that a spiking neural network can learn procedural, syntactic code execution without pre-training or distillation.
+
 Demonstrate real-time, associative memory retrieval for robotic control.
+
 Establish a biologically grounded neuro-symbolic bridge that avoids the probabilistic failure modes of dense LLMs.
 
 ####  Chatbots are a solved problem, but standard robotic operating systems are rigid message-passers that cannot adapt. S-ROS marries the absolute, deterministic certainty of procedural logic (BASIC/ROS) with the associative, real-time learning capabilities of a pure spiking neural network.
