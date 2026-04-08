@@ -2,7 +2,7 @@
 ## Chatbots are a solved problem. 
 
 ###  Standard robotic operating systems are rigid message-passers that cannot adapt. S-ROS marries the absolute, deterministic certainty of procedural logic (BASIC/ROS) with the associative, real-time learning capabilities of a pure spiking neural network.
-S-ROS strips out the bloated probability matrices required to parse natural language and replaces them with a hyper-efficient, neuro-symbolic state machine. It does not predict the next word in a sentence; it predicts the next logical machine state, remembers the outcome, and physically rewires its own execution pathways based on survival and success.
+S-ROS strips out the bloated probability matrices required to parse natural language and replaces them with a hyper-efficient, neuro-symbolic state machine. It does not predict the next word in a sentence; it predicts the next logical machine state, remembers the outcome, and physically rewires its own execution pathways based on success and failure.
 
 ### 1. The Neuro-Symbolic Translator (The Rigid Interface)
 S-ROS abandons massive tokenizers in favor of a dynamicslly expanding lookup table. Every valid environmental state (SENSOR_BLOCKED) and procedural command (MOTOR_REVERSE) maps 1-to-1 to a fixed, orthogonal spike pattern.
