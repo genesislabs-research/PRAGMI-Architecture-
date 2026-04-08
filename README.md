@@ -21,6 +21,9 @@ The hypothesis under test is not just that spiking language models can converge 
 ---
 
 ## Architecture Overview
+Chatbots are essentially a solved problem built on bloated probability matrices that just predict the next word. 
+
+S-ROS (Spiking Robot Operating System) is on a completely different level because it abandons that probabilistic guessing to act as a hyper-efficient, self-wiring biological logic gate
 
 In standalone mode Timmy functions as a complete spiking language model trainable on standard next-token prediction tasks.
 
