@@ -28,6 +28,8 @@ It feeds this context back to Tiny_Tim: Last time we were in this state, this sp
 
 
 ### The Execution Loop
+![S-ROS Architecture Diagram](./assets/s-ros-1775765475261.jpg)
+
 Sense: Hardware reads the environment.
 Encode: Translator converts the exact state into a spike vector.
 Recall: S-CAM retrieves the associative memory of past actions in this state.
