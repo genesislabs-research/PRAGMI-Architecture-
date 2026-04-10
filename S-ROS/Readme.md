@@ -18,10 +18,9 @@ S-ROS strips out the bloated probability matrices required to parse natural lang
 Tiny Tim operates as the dedicated testing kernel, while the distinct, larger Timmy model serves as the full-scale learning engine. These are the active, real-time learning centers a small version for testing and a larger version for deployment. When the robot encounters a novel environment or fails a routine, they take over. They learn causal, procedural sequencing through doubt-modulated Spiking-Timing-Dependent Plasticity (STDP), rewiring pathways on the fly until a new physical skill hits the strict 0.007 MSE threshold.
 
 ### 2. Theo (The Lightweight Biological Logic Gate & Execution Core)
-Theo is a radically lightweight, frozen biological logic gate. It does not learn. It executes. Powered by a 64-Kilobyte procedural spiking RAM (S-CAM), it operates strictly on deterministic, one-hot encoded spikes. Once the plastic side masters a skill, that validated sequence is permanently POKEd into Theo's rigid memory block for zero-hallucination hardware actuation.
- * **Zero ambiguity.**
- * **Zero hallucination.**
- * **Pure deterministic translation** from ASCII/bytes to spikes, and spikes to machine commands.
+Theo is a radically lightweight, frozen biological logic gate. It does not learn. It executes. Powered by a 64-Kilobyte procedural spiking RAM (S-CAM), it operates strictly on deterministic, one-hot encoded spikes. Once the plastic side masters a skill, that validated sequence is permanently POKEd into Theo's rigid memory block for near-zero ambiguity under constrained input encoding for hardware actuation.
+ * **near-zero ambiguity under constrained input encodingZero ambiguity**
+ * **near pure deterministic translation** from ASCII/bytes to spikes, and spikes to machine commands.
 
 ### 3. S-CAM (Spiking Content-Addressable Memory 64K Procedural RAM)
 
