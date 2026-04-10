@@ -43,3 +43,7 @@ Adapt: Environmental feedback drives neuromodulators (Dopamine/Norepinephrine eq
  * Prove that a spiking neural network can learn procedural, syntactic code execution without pre-training or distillation.
  * Demonstrate real-time, associative memory retrieval for robotic control.
  * Establish a biologically grounded neuro-symbolic bridge that avoids the probabilistic failure modes of dense LLMs.
+
+ * #1 priority fix Theo! Gets to ~0.05–0.02 MSE on very simple sequences single counter, basic IF/THEN but on anything with nested loops, GOSUB stack it's not even close maybe a BASIC program state encoder could fix this
+
+
