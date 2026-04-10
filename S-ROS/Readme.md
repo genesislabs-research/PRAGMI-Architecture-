@@ -14,12 +14,11 @@
 ####  Chatbots are a solved problem, but standard robotic operating systems are rigid message-passers that cannot adapt. S-ROS marries the absolute, deterministic certainty of procedural logic (BASIC/ROS) with the associative, real-time learning capabilities of a pure spiking neural network.
 S-ROS strips out the bloated probability matrices required to parse natural language and replaces them with a hyper-efficient, neuro-symbolic state machine. It does not predict the next word in a sentence; it predicts the next logical machine state, remembers the outcome, and physically rewires its own execution pathways based on success and failure.
 
+### 1. Tiny Tim & Timmy (The Plastic Learning Cores)
+Tiny Tim operates as the dedicated testing kernel, while the distinct, larger Timmy model serves as the full-scale learning engine. These are the active, real-time learning centers a small version for testing and a larger version for deployment. When the robot encounters a novel environment or fails a routine, they take over. They learn causal, procedural sequencing through doubt-modulated Spiking-Timing-Dependent Plasticity (STDP), rewiring pathways on the fly until a new physical skill hits the strict 0.007 MSE threshold.
 
-### 1. Tiny_Tim (The Logic Engine)
-A radically lightweight cortical column ensemble designed as a small testing kernel. Without the burden of learning human grammar, Tiny_Tim functions as a self-wiring biological logic gate. It receives environmental spike vectors, processes them through its spiking layers, and outputs command spike vectors. It learns causal, procedural sequencing through reward-modulated Spiking-Timing-Dependent Plasticity (STDP).
-
-### 2. The Neuro-Symbolic Translator (The Rigid Interface)
-S-ROS abandons massive tokenizers in favor of a dynamicslly expanding lookup table. Every valid environmental state (SENSOR_BLOCKED) and procedural command (MOTOR_REVERSE) maps 1-to-1 to a fixed, orthogonal spike pattern.
+### 2. Theo (The Lightweight Biological Logic Gate & Execution Core)
+Theo is a radically lightweight, frozen biological logic gate. It does not learn. It executes. Powered by a 64-Kilobyte procedural spiking RAM (S-CAM), it operates strictly on deterministic, one-hot encoded spikes. Once the plastic side masters a skill, that validated sequence is permanently POKEd into Theo's rigid memory block for zero-hallucination hardware actuation.
  * **Zero ambiguity.**
  * **Zero hallucination.**
  * **Pure deterministic translation** from ASCII/bytes to spikes, and spikes to machine commands.
