@@ -2,7 +2,7 @@
 Theo_Core_t.py
 THEO - Deterministic Recurrent Execution Core for S-ROS
 (AM 4-10-2026) ==> Gets to ~0.05–0.02 MSE on very simple sequences single counter, basic IF/THEN but on anything with nested loops, GOSUB stack it's not even close maybe a BASIC program state encoder could fix this
-THEO - Deterministic Recurrent Execution Core for S-ROS
+
 
 BIOLOGICAL GROUNDING
 This file implements the frozen deterministic core as a recurrent function approximator.
