@@ -22,11 +22,12 @@ S-ROS abandons massive tokenizers in favor of a dynamicslly expanding lookup tab
  * **Zero hallucination.**
  * **Pure deterministic translation** from ASCII/bytes to spikes, and spikes to machine commands.
 
-### 3. S-CAM (Spiking Content-Addressable Memory)
-The associative "hard drive." S-CAM acts as a biological database for execution memory, replacing the larger Cognitive Kernel.
-It stores complete episodic sequences of hardware execution: [Environment State] -> [Action Taken] -> [Outcome].
-When S-ROS encounters a noisy or partial state, S-CAM's attractor network dynamically settles into the closest stored memory basin.
-It feeds this context back to Tiny_Tim: Last time we were in this state, this specific command resulted in a novelty mismatch (a crash).
+### 3. S-CAM (Spiking Content-Addressable Memory 64K Procedural RAM)
+
+The associative "hard drive" of 65,536-slot procedural execution block. S-CAM conceptually mirrors the 64-Kilobyte addressable memory architecture of classic 8-bit microcomputers (like the Commodore 64), but built entirely out of spiking neural tensors.
+It acts as the physical RAM for the execution core. Instead of just holding isolated associative reflexes, it stores contiguous blocks of procedural logic mapped into 128-dimensional spike vectors. Using strict one-hot encoding for FSM stability, it hybridizes associative memory (content-addressable jumps and hardware interrupts) with sequential execution (a spiking program counter).
+This allows S-ROS to store, recall, and natively step through complex, nested procedural code entirely within a biologically grounded spiking manifold, guaranteeing near zero-hallucination hardware execution.
+The associative "hard drive." S-CAM acts as a biological database for execution memory, replacing the larger Cognitive Kernel for the Theo side of the neocortex.
 
 
 ### The Execution Loop
