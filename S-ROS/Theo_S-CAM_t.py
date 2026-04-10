@@ -2,7 +2,7 @@
 Theo_S-CAM_t.py
 Spiking Content-Addressable Memory (64K Procedural RAM lol)
 
-BIOLOGICAL & COMPUTATIONAL GROUNDING:
+COMPUTATIONAL GROUNDING:
 Upgrades the rigid engram store of the deterministic core into a massive 
 64-Kilobyte (65,536 slot) procedural memory space. It hybridizes associative 
 memory (content-addressable lookup) with sequential execution (program counter), 
