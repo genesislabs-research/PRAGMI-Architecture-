@@ -8,7 +8,7 @@ Reconstructive Architecture for Generative Memory and Imagination) system.
 It does not model a single brain region. It models the organism-level
 training cycle: the repeated loop of experience, encoding, consolidation,
 and prediction refinement that underlies learning in biological nervous
-systems.
+system
 
 The five subsystems wired together here correspond to the following
 biological functions:
