@@ -1,5 +1,6 @@
 # Contains various de novo snn's
-# doing various things 
+# doing various things because reasons
+# This is a public development space and nothing should be considered finished
 
 ## here's some stuff I used:
 Thalamic Gating and Top-Down Attention
