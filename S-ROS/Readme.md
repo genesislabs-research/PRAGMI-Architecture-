@@ -1,7 +1,7 @@
 # S-ROS (Spiking Robot Operating System)
 ## Project Goals
 
-1) Reach Crystallization Threshold: Prove that a de novo spiking neural network can reach a transition prediction loss of < 0.007 (0.7% MSE) to safely lock in autonomous skills.
+1) Reach Crystallization Threshold: Prove that a de novo spiking neural network can reach a transition prediction loss of < 0.007 (0.7% MSE) 
 
 2) Procedural Execution: Prove that a spiking neural network can learn procedural, syntactic code execution (BASIC-style logic) without pre-training or distillation.
 
