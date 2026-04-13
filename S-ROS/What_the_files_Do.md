@@ -1,4 +1,4 @@
-##neocortex_helper_t.py
+## neocortex_helper_t.py
 is the implementation of neocortical translation utilities that model how association cortices bridge distinct neural representations. Its primary job is to unify deterministic execution memory spikes with continuous semantic float embeddings so they can be integrated for downstream processing. It accomplishes this through three core mechanisms: a population decoder that translates discrete, orthogonal spiking activity into a continuous vector space; a schema overlap metric that calculates the geometric cosine similarity between incoming memory episodes and established semantic knowledge to quantify representational overlap; and a multimodal binder that concatenates and projects these decoded action states and semantic streams into a singular, shared coordinate manifold. By mathematically translating and fusing these diverse inputs, the module prepares unified multimodal representations essential for hippocampal projection and higher-order cognitive processing.
 
 ## cortical_buffer_teaching.py
