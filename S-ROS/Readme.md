@@ -46,3 +46,55 @@ If not → continue training next epoch
 
 **Final output:**  
 Checkpoint with model weights + full crystallization log
+
+## Rote Learning + Crystallization Pipeline
+┌────────────────────────────────────────────────────────┐
+│               rote_data_generator.py                   │
+│     (Generates 15 BASIC rule classes & splits data)    │
+└──────┬──────────────────────────────────────────┬──────┘
+       │                                          │
+       │ (Training Pairs)                         │ (Held-Out Test Pairs)
+       ▼                                          │
+┌──────────────────────────────────────┐          │
+│       hello_world_trainer.py         │          │
+│                                      │          │
+│  1. Encodes BASIC lines              │          │
+│  2. Runs RoteLearner (LIF Network)   │          │
+│  3. Computes cross-entropy loss      │          │
+│  4. Backpropagates & updates weights │          │
+└──────┬───────────────────────────────┘          │
+       │                                          │
+       │ (After N training steps)                 │
+       ▼                                          ▼
+┌────────────────────────────────────────────────────────┐
+│              crystallization_manager.py                │
+│                        (Neo)                           │
+│                                                        │
+│  Tests network on Held-Out Test Pairs.                 │
+│  Checks 3 conditions for K consecutive windows:        │
+│    • Training loss < threshold                         │
+│    • Weight delta variance stabilized                  │
+│    • Generalization accuracy > target                  │
+└──────┬─────────────────────────────────────────┬───────┘
+       │                                         │
+       ▼                                         ▼
+  [FAIL / NO]                               [PASS / YES]
+       │                                         │
+       │ (Rule not learned)                      │ (Rule understood)
+       └─────────────────────────────────────────┤
+            Continues training next epoch        │
+                                                 ▼
+                                    ┌─────────────────────────┐
+                                    │   Rule Crystallized!    │
+                                    │  (Skip rule in future)  │
+                                    └────────────┬────────────┘
+                                                 │
+                                                 ▼
+                                    ┌─────────────────────────┐
+                                    │  Final Checkpoint &     │
+                                    │  Crystallization Log    │
+                                    └─────────────────────────┘
+
+
+
+
