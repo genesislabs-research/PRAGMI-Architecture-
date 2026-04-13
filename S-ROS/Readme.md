@@ -16,42 +16,30 @@
 ### It does not understand what it guessed or why. Understanding requires the system to build an internal model where the relationships between elements are represented explicitly enough that the system can answer questions it was never trained on by composing what it knows. When a human learns that PRINT with a comma puts output in the next zone, they do not just memorize the input-output pair. They build a model of what zones are, what commas do as separators, and what PRINT does as a display operation. Those three pieces compose freely: they can predict what PRINT A$, B$, C$ does without ever having seen a three-argument example, because they understand the comma rule, not just the specific case.
 
 
-
 ## Rote Learning + Crystallization Pipeline
 
 ```mermaid
 flowchart TD
-    A[rote_data_generator.py\nGenerates 15 BASIC rule classes & splits data] 
+    A[rote_data_generator.py - Generates 15 BASIC rule classes & splits data]
     A -->|"Training Pairs"| B
     A -->|"Held-Out Test Pairs"| C
 
-    B[hello_world_trainer.py\n\n1. Encodes BASIC lines\n2. Runs RoteLearner (LIF Network)\n3. Computes cross-entropy loss\n4. Backpropagates & updates weights]
+    B[hello_world_trainer.py - 1. Encodes BASIC lines  2. Runs RoteLearner (LIF)  3. Computes loss  4. Backprop & updates]
     B -->|"After N training steps"| C
 
-    C[crystallization_manager.py (Neo)\n\nTests network on Held-Out Test Pairs\nChecks 3 conditions for K consecutive windows:\n• Training loss < threshold\n• Weight delta variance stabilized\n• Generalization accuracy > target]
+    C[crystallization_manager.py (Neo) - Tests held-out pairs. Checks 3 conditions: loss < threshold, weight variance stable, generalization accuracy > target]
 
-    C -->|FAIL / NO\nRule not learned\nContinues training next epoch| B
-    C -->|PASS / YES\nRule understood| E
+    C -->|FAIL - Continue training| B
+    C -->|PASS - Rule understood| E
 
-    E[Rule Crystallized!\n(Skip rule in future)]
+    E[Rule Crystallized! (Skip in future)]
     E --> F[Final Checkpoint & Crystallization Log]
 
-    classDef gen fill:#bae6fd,stroke:#0369a1,color:#0c4a6e,rx:10
-    classDef train fill:#99f6e4,stroke:#0f766e,color:#134e4a,rx:10
-    classDef neo fill:#c4b5fd,stroke:#6b21a8,color:#4c1d95,rx:10
-    classDef success fill:#86efac,stroke:#166534,color:#14532d,rx:10
-
-    class A gen
-    class B train
-    class C neo
-    class E success
-    class F success
-
-
+    classDef box fill:#e0f2fe,stroke:#0369a1,color:#0c4a6e,rx:8
+    class A,B,C box
+    class E,F fill:#86efac,stroke:#166534,color:#14532d,rx:8
 
     
-    class E,F pass;
-    class D fail;
     
                                      
         
