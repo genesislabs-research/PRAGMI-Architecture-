@@ -19,33 +19,27 @@
 ## Rote Learning + Crystallization Pipeline
 
 **rote_data_generator.py**  
-(Generates 15 BASIC rule classes & splits data)
-
-├── Training Pairs  
-└── Held-Out Test Pairs (never seen during training)
-
-↓
+Generates 15 BASIC rule classes and splits data into Training Pairs and Held-Out Test Pairs.
 
 **hello_world_trainer.py**  
-1. Encodes BASIC lines as character sequences  
-2. Runs RoteLearner (LIF recurrent network)  
+1. Encodes BASIC lines  
+2. Runs RoteLearner (LIF Network)  
 3. Computes cross-entropy loss  
 4. Backpropagates & updates weights  
 
-After every N training steps ↓
+After every N training steps, it hands control to:
 
 **crystallization_manager.py (Neo)**  
-Tests the network on Held-Out Test Pairs.  
-Checks **3 conditions** for K consecutive evaluation windows:  
+Tests the network on the Held-Out Test Pairs.  
+Checks 3 conditions for K consecutive windows:  
 • Training loss < threshold  
-• Weight delta variance has stabilized  
-• Generalization accuracy on unseen instances > target  
+• Weight delta variance stabilized  
+• Generalization accuracy > target  
 
-If **all three pass** → **Rule Crystallized!** (skip this rule in future epochs)  
-If not → continue training next epoch
+If all 3 pass → **Rule Crystallized!** (skipped in future epochs)  
+If not → continue training next epoch.
 
-**Final output:**  
-Checkpoint with model weights + full crystallization log
+**Final output:** Checkpoint + Crystallization Log
 
 ## Rote Learning + Crystallization Pipeline
 ┌────────────────────────────────────────────────────────┐
