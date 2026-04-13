@@ -17,31 +17,45 @@
 
 
 ## Rote Learning + Crystallization Pipeline
+┌──────────────────────────────────────────────────────────────┐
+│                    rote_data_generator.py                    │
+│          (Generates 15 BASIC rule classes & splits data)     │
+└───────────────────────┬──────────────────────────────┬───────┘
+                        │                              │
+               Training Pairs                 Held-Out Test Pairs
+                        ▼                              │
+┌──────────────────────────────────────────────────────┐   │
+│                 hello_world_trainer.py               │   │
+│                                                      │   │
+│  1. Encodes BASIC lines                              │   │
+│  2. Runs RoteLearner (LIF Network)                   │   │
+│  3. Computes cross-entropy loss                      │   │
+│  4. Backpropagates & updates weights                 │   │
+└───────────────────────┬──────────────────────────────┘   │
+                        │                                  │
+                After N training steps                     │
+                        ▼                                  ▼
+┌────────────────────────────────────────────────────────────────────┐
+│                 crystallization_manager.py (Neo)                   │
+│                                                                    │
+│  Tests network on Held-Out Test Pairs                              │
+│  Checks 3 conditions for K consecutive windows:                    │
+│    • Training loss < threshold                                     │
+│    • Weight delta variance stabilized                              │
+│    • Generalization accuracy > target                              │
+└───────────────────────┬──────────────────────────────┬─────────────┘
+                        │                              │
+                   [FAIL / NO]                   [PASS / YES]
+                        │                              │
+             Rule not learned               Rule understood
+                        │                              │
+                        └──────────────────────────────┘
+                                      ▼
+                           Rule Crystallized!
+                        (Skip rule in future)
+                                      │
+                                      ▼
+                           Final Checkpoint
+                        & Crystallization Log
 
-```mermaid
-flowchart TD
-    A[rote_data_generator.py - Generates 15 BASIC rule classes & splits data]
-    A -->|"Training Pairs"| B
-    A -->|"Held-Out Test Pairs"| C
 
-    B[hello_world_trainer.py - 1. Encodes BASIC lines  2. Runs RoteLearner (LIF)  3. Computes loss  4. Backprop & updates]
-    B -->|"After N training steps"| C
-
-    C[crystallization_manager.py (Neo) - Tests held-out pairs. Checks 3 conditions: loss < threshold, weight variance stable, generalization accuracy > target]
-
-    C -->|FAIL - Continue training| B
-    C -->|PASS - Rule understood| E
-
-    E[Rule Crystallized! (Skip in future)]
-    E --> F[Final Checkpoint & Crystallization Log]
-
-    classDef box fill:#e0f2fe,stroke:#0369a1,color:#0c4a6e,rx:8
-    class A,B,C box
-    class E,F fill:#86efac,stroke:#166534,color:#14532d,rx:8
-
-    
-    
-                                     
-        
- 
-                                     
