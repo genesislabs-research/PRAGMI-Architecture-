@@ -21,44 +21,31 @@
 
 ```mermaid
 flowchart TD
-    %% Data Generator
-    A[rote_data_generator.py\nGenerates 15 BASIC rule classes & splits data]
-
-    %% Data flow
+    A[rote_data_generator.py\nGenerates 15 BASIC rule classes & splits data] 
     A -->|"Training Pairs"| B
     A -->|"Held-Out Test Pairs"| C
 
-    %% Trainer
     B[hello_world_trainer.py\n\n1. Encodes BASIC lines\n2. Runs RoteLearner (LIF Network)\n3. Computes cross-entropy loss\n4. Backpropagates & updates weights]
-
-    %% Evaluation trigger
     B -->|"After N training steps"| C
 
-    %% Crystallization Manager (Neo)
-    C[crystallization_manager.py (Neo)\n\nTests network on Held-Out Test Pairs.\nChecks 3 conditions for K consecutive windows:\n• Training loss < threshold\n• Weight delta variance stabilized\n• Generalization accuracy > target]
+    C[crystallization_manager.py (Neo)\n\nTests network on Held-Out Test Pairs\nChecks 3 conditions for K consecutive windows:\n• Training loss < threshold\n• Weight delta variance stabilized\n• Generalization accuracy > target]
 
-    %% Decision branches
-    C -->|FAIL / NO\nRule not learned| D[Continues training\nnext epoch]
-    C -->|PASS / YES\nRule understood| E[Rule Crystallized!\n(Skip rule in future)]
+    C -->|FAIL / NO\nRule not learned\nContinues training next epoch| B
+    C -->|PASS / YES\nRule understood| E
 
-    %% Loop back to trainer
-    D --> B
+    E[Rule Crystallized!\n(Skip rule in future)]
+    E --> F[Final Checkpoint & Crystallization Log]
 
-    %% Final output
-    E --> F[Final Checkpoint &\nCrystallization Log]
+    classDef gen fill:#bae6fd,stroke:#0369a1,color:#0c4a6e,rx:10
+    classDef train fill:#99f6e4,stroke:#0f766e,color:#134e4a,rx:10
+    classDef neo fill:#c4b5fd,stroke:#6b21a8,color:#4c1d95,rx:10
+    classDef success fill:#86efac,stroke:#166534,color:#14532d,rx:10
 
-    %% Styling
-    classDef generator fill:#bae6fd,stroke:#0c4a6e,stroke-width:2px,color:#0c4a6e,rx:15,ry:15;
-    classDef trainer fill:#99f6e4,stroke:#134e4a,stroke-width:2px,color:#134e4a,rx:15,ry:15;
-    classDef neo fill:#c4b5fd,stroke:#4c1d95,stroke-width:3px,color:#4c1d95,rx:15,ry:15;
-    classDef success fill:#86efac,stroke:#166534,stroke-width:2px,color:#166534,rx:15,ry:15;
-    classDef final fill:#4ade80,stroke:#14532d,stroke-width:2px,color:#14532d,rx:15,ry:15;
-
-    class A generator
-    class B trainer
+    class A gen
+    class B train
     class C neo
     class E success
-    class F final
+    class F success
 
 
 
