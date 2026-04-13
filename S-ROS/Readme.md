@@ -15,53 +15,35 @@
 ## A system that predicts the next token and then stores memories of its own predictions is a system that just remembers what it guessed. 
 ### It does not understand what it guessed or why. Understanding requires the system to build an internal model where the relationships between elements are represented explicitly enough that the system can answer questions it was never trained on by composing what it knows. When a human learns that PRINT with a comma puts output in the next zone, they do not just memorize the input-output pair. They build a model of what zones are, what commas do as separators, and what PRINT does as a display operation. Those three pieces compose freely: they can predict what PRINT A$, B$, C$ does without ever having seen a three-argument example, because they understand the comma rule, not just the specific case.
 
+flowchart TD
+    A[<b>rote_data_generator.py</b><br/>Generates 15 BASIC rule classes & splits data]
+    
+    A -->|Training Pairs| B
+    A -->|Held-Out Test Pairs| C
 
- ┌────────────────────────────────────────────────────────┐
- │               rote_data_generator.py                   │
- │     (Generates 15 BASIC rule classes & splits data)    │
- └──────┬──────────────────────────────────────────┬──────┘
-        │                                          │
-        │ (Training Pairs)                         │ (Held-Out Test Pairs)
-        ▼                                          │
- ┌──────────────────────────────────────┐          │
- │       hello_world_trainer.py         │          │
- │                                      │          │
- │  1. Encodes BASIC lines              │          │
- │  2. Runs RoteLearner (LIF Network)   │          │
- │  3. Computes cross-entropy loss      │          │
- │  4. Backpropagates & updates weights │          │
- └──────┬───────────────────────────────┘          │
-        │                                          │
-        │ (After N training steps)                 │
-        ▼                                          ▼
- ┌────────────────────────────────────────────────────────┐
- │              crystallization_manager.py                │
- │                        (Neo)                           │
- │                                                        │
- │  Tests network on Held-Out Test Pairs.                 │
- │  Checks 3 conditions for K consecutive windows:        │
- │    [ ] Training loss < threshold                       │
- │    [ ] Weight delta variance stabilized                │
- │    [ ] Generalization accuracy > target                │
- └──────┬─────────────────────────────────────────┬───────┘
-        │                                         │
-        ▼                                         ▼
-   [FAIL / NO]                               [PASS / YES]
-        │                                         │
-        │ (Rule not learned)                      │ (Rule understood)
-        └─────────────────────────────────────────┤
-             Continues training next epoch        │
-                                                  ▼
-                                     ┌─────────────────────────┐
-                                     │   Rule Crystallized!    │
-                                     │  (Skip rule in future)  │
-                                     └────────────┬────────────┘
-                                                  │
-                                                  ▼
-                                     ┌─────────────────────────┐
-                                     │  Final Checkpoint &     │
-                                     │  Crystallization Log    │
-                                     └─────────────────────────┘
+    subgraph Training Engine
+        B[<b>hello_world_trainer.py</b><br/>1. Encodes BASIC lines<br/>2. Runs RoteLearner LIF Network<br/>3. Computes cross-entropy loss<br/>4. Backpropagates & updates weights]
+    end
+
+    B -->|After N training steps| C
+
+    subgraph Neo
+        C{<b>crystallization_manager.py</b><br/>Tests network on Held-Out Test Pairs<br/>Checks 3 conditions for K windows:<br/>1. Loss < threshold<br/>2. Weight delta stabilized<br/>3. Gen accuracy > target}
+    end
+
+    C -->|FAIL / NO<br/>Rule not learned| D[Continues training next epoch]
+    D -->|Loops back| B
+    
+    C -->|PASS / YES<br/>Rule understood| E[<b>Rule Crystallized!</b><br/>Skip rule in future]
+    E --> F[Final Checkpoint &<br/>Crystallization Log]
+    
+    classDef default fill:#2b313c,stroke:#5c6370,stroke-width:2px,color:#d7dae0;
+    classDef pass fill:#1e4620,stroke:#2ea043,stroke-width:2px,color:#ffffff;
+    classDef fail fill:#4a1c1c,stroke:#f85149,stroke-width:2px,color:#ffffff;
+    
+    class E,F pass;
+    class D fail;
+    
                                      
         
  
