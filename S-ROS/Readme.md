@@ -11,7 +11,9 @@
 
 # Chatbots are a solved problem, 
 #### but standard robotic operating systems are rigid message-passers that cannot adapt. S-ROS marries the absolute, deterministic certainty of procedural logic (BASIC/ROS) with the associative, real-time learning capabilities of a pure spiking neural network.
-S-ROS strips out the bloated probability matrices required to parse natural language and replaces them with a hyper-efficient, neuro-symbolic state machine. It does not predict the next word in a sentence; it predicts the next logical machine state, remembers the outcome, and physically rewires its own execution pathways based on success and failure.
+
+## A system that predicts the next token and then stores memories of its own predictions is a system that just remembers what it guessed. 
+### It does not understand what it guessed or why. Understanding requires the system to build an internal model where the relationships between elements are represented explicitly enough that the system can answer questions it was never trained on by composing what it knows. When a human learns that PRINT with a comma puts output in the next zone, they do not just memorize the input-output pair. They build a model of what zones are, what commas do as separators, and what PRINT does as a display operation. Those three pieces compose freely: they can predict what PRINT A$, B$, C$ does without ever having seen a three-argument example, because they understand the comma rule, not just the specific case.
 
 
 
