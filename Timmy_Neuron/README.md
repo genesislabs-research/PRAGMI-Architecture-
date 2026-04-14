@@ -21,7 +21,6 @@ Every architectural decision is cited to the neuroscience paper it was derived f
 
 # What the files Do
 
-## Timmy Neuron Project Documentation
 ## array_monitor.py
 is the diagnostic instrumentation module for Phase two divergence training of the cortical column ensemble. It evaluates whether specialist columns are genuinely differentiating from the prime integration column by tracking four key metrics: router entropy to ensure balanced activation, activation frequency to monitor stability, subspace effective rank to measure representational dimensionality, and cosine distance to quantify structural divergence. By accumulating these signals over time and generating alerts for routing collapse or failure to diverge, it provides the essential telemetry needed to verify that the ensemble is developing specialized and non overlapping functional networks.
 ## astrocytic_regulator_v3.py
@@ -30,8 +29,7 @@ models the active role of astrocytes in regulating synaptic plasticity through t
 assembles the core cortical column ensemble where a central broadband integration column coordinates multiple distinct specialist columns sharing a unified cognitive kernel. It initializes all columns as identical replicas before divergence and uses a dedicated router to distribute processing load based on the working memory state of the prime column. During execution, it runs the selected specialists in parallel and funnels their outputs through a perforant path symphony bridge which compresses the active representations into a single coordinate vector for hippocampal processing. It then completes the learning loop by routing external mismatch and novelty feedback back exclusively to the prime column and the specific specialist that won the routing bid for that episode.
 ## firstday.py
 is the implementation of the developmental transition between the template phase and the experience-dependent specialization phase for the cortical column ensemble. It initiates this process by copying the completely trained state of the prime integration column into every specialist column simultaneously, ensuring they all start as identical replicas. Immediately following this clone event, it executes a targeted initial sleep cycle that applies specialty-directed synaptic scaling to begin functionally differentiating the columns. By completing this initial divergence and saving the resulting post-sleep state, this script officially transitions the array into its mature, specialized operational phase.
-## README.md
-serves as the primary documentation for the Timmy Neuron repository, explaining its role as the bridge layer within the broader PRAGMI architecture. It details how the system translates discrete token sequences into temporal spike patterns and outlines the core Thousand Brains design featuring a central integration column and multiple specialists. The document also provides critical integration instructions for injecting external continuous embeddings and novelty reward signals into the network. Furthermore, it strictly defines the project's documentation standard, mandating that every architectural component be explicitly grounded in biological literature with accompanying citations.
+
 ## REFERENCES.md
 is the comprehensive bibliography and biological grounding ledger for the entire PRAGMI codebase. It provides a complete, organized list of all academic papers and DOIs that are cited within the project to justify architectural decisions, parameter values, and biological claims. The document systematically categorizes these sources into specific neuroscience domains such as single neuron dynamics, synaptic plasticity, and cortical architecture, while explicitly mapping each citation to the exact Python files where its principles are implemented.
 ## smoke_test.py
@@ -60,7 +58,8 @@ is the implementation of the reward modulated spike timing dependent plasticity 
 is the primary training script for the Timmy spiking language model. It handles the full learning loop by orchestrating data loading from sources like HuggingFace or local text files and managing the optimization process. The script utilizes an AdamW optimizer with a cosine learning rate schedule and incorporates several specialized loss functions including asymmetric spike rate regularization to prevent neural silence and mixture of experts load balancing. It also supports mixed precision training and optional reward modulated spike timing dependent plasticity for the executive zone, ensuring that the model can be trained efficiently while maintaining biological plausibility.
 ## train_array.py
 is the implementation of the two-phase training workflow for the TimmyArray cortical column ensemble. In the first phase, it trains the prime integration column alone on a broad data distribution to establish a generalist coordination scaffold. In the second phase, it enables simultaneous training across all columns where each specialist receives domain-specific input to drive functional divergence through experience-dependent plasticity. Throughout this process, the script manages the dynamic load balancing of the column router and ensures that differentiation emerges naturally from the input statistics rather than through rigid architectural constraints.
-
+## README.md
+ essentially this file 
 
 ---
 
