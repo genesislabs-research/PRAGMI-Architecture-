@@ -41,7 +41,7 @@ If not → continue training next epoch.
 
 **Final output:** Checkpoint + Crystallization Log
 
-# What the files do
+# What the files are supposed to do {spoiler - it's not working} - yet
 ## crystallization_manager.py
 is the implementation of Neo, the crystallization monitor. Its core function is to answer one question: does the network understand a rule, or has it just memorized specific examples? It maintains a registry of rule classes, where each class has training instances the network learns from and held-out test instances the network never sees during training. After every N training steps, it runs the network on those held-out instances and checks whether the network gets them right. A rule only crystallizes when three conditions are met simultaneously for K consecutive evaluation windows: training loss is below threshold, weight delta variance has stabilized, and generalization accuracy on unseen instances exceeds the target. That third condition is what makes this different from every other convergence monitor. Without it, you get a system that memorizes. With it, you get a system that learns. The module is deliberately standalone with no dependencies on the Cognitive Kernel so it can be tested in isolation. Once it works here with Theo on rote BASIC data, it integrates into the kernel without rewriting.
 ## rote_data_generator.py
