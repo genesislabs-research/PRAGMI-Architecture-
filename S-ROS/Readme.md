@@ -15,7 +15,7 @@
 ## A system that predicts the next token and then stores memories of its own predictions is a system that just remembers what it guessed. 
 ### It does not understand what it guessed or why. Understanding requires the system to build an internal model where the relationships between elements are represented explicitly enough that the system can answer questions it was never trained on by composing what it knows. When a human learns that PRINT with a comma puts output in the next zone, they do not just memorize the input-output pair. They build a model of what zones are, what commas do as separators, and what PRINT does as a display operation. Those three pieces compose freely: they can predict what PRINT A$, B$, C$ does without ever having seen a three-argument example, because they understand the comma rule, not just the specific case.
 
-![Description of the image](./images/your-screenshot.png)
+
 ## Stage 1: Keyword Recognition Complete
 <img width="1212" height="1333" alt="S-ROSS Training" src="https://github.com/user-attachments/assets/e0213736-a640-4d50-8487-fbca222e1471" />
 
