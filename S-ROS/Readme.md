@@ -5,12 +5,14 @@
 
 2) Prove that a de novo spiking neural network can learn procedural, syntactic code execution (BASIC-style logic) without pre-training or distillation.
 
-3) Prove that a de novo spiking neural network can overcome the limits of standard Finite State Machines by implementing a discrete Spiking Call Stack, allowing the network to natively track GOSUB recursion and nested loops without state aliasing.
-  
-4) Establish a biologically grounded neuro-symbolic bridge that completely isolates exploratory learning from rigid, near zero-hallucination robotic actuation laying the ground work for learning systems which can reach an Interal Crystallization Threshold: 0.7% MSE while also containing one shot learning mechanics.
+3) Establish a biologically grounded neuro-symbolic bridge that completely isolates exploratory learning from rigid, near zero-hallucination robotic actuation laying the ground work for learning systems which can reach an Interal Crystallization Threshold of 0.7% MSE while also containing one shot learning mechanics
 
-# Chatbots are a solved problem, 
-#### but standard robotic operating systems are rigid message-passers that cannot adapt. S-ROS marries the absolute, deterministic certainty of procedural logic (BASIC/ROS) with the associative, real-time learning capabilities of a pure spiking neural network.
+4) Prove that a de novo spiking neural network can overcome the limits of standard Finite State Machines by implementing a discrete Spiking Call Stack, allowing the network to natively track GOSUB recursion and nested loops without state aliasing.
+  
+
+
+
+#### Chatbots are a solved problem, but standard robotic operating systems are rigid message-passers that cannot adapt. S-ROS marries the absolute, deterministic certainty of procedural logic (BASIC/ROS) with the associative, real-time learning capabilities of a pure spiking neural network.
 
 ## A system that predicts the next token and then stores memories of its own predictions is a system that just remembers what it guessed. 
 ### It does not understand what it guessed or why. Understanding requires the system to build an internal model where the relationships between elements are represented explicitly enough that the system can answer questions it was never trained on by composing what it knows. When a human learns that PRINT with a comma puts output in the next zone, they do not just memorize the input-output pair. They build a model of what zones are, what commas do as separators, and what PRINT does as a display operation. Those three pieces compose freely: they can predict what PRINT A$, B$, C$ does without ever having seen a three-argument example, because they understand the comma rule, not just the specific case.
@@ -46,12 +48,12 @@ Checks 3 conditions for K consecutive windows:
 If all 3 pass → **Rule Crystallized!** (skipped in future epochs)  
 If not → continue training next epoch.
 
-### Usage
-## python3.11 -u curriculum_trainer_v5.py --epochs 5000 --device cuda --save theo_curriculum_v5
+## Usage
+### python3.11 -u curriculum_trainer_v5.py --epochs 5000 --device cuda --save theo_curriculum_v5
 
 
 
-# What the files are supposed to do {spoiler - it's not working} - yet
+# What the files are supposed to do 
 ## crystallization_manager.py
 is the implementation of Neo, the crystallization monitor. Its core function is to answer one question: does the network understand a rule, or has it just memorized specific examples? It maintains a registry of rule classes, where each class has training instances the network learns from and held-out test instances the network never sees during training. After every N training steps, it runs the network on those held-out instances and checks whether the network gets them right. A rule only crystallizes when three conditions are met simultaneously for K consecutive evaluation windows: training loss is below threshold, weight delta variance has stabilized, and generalization accuracy on unseen instances exceeds the target. That third condition is what makes this different from every other convergence monitor. Without it, you get a system that memorizes. With it, you get a system that learns. The module is deliberately standalone with no dependencies on the Cognitive Kernel so it can be tested in isolation. Once it works here with Theo on rote BASIC data, it integrates into the kernel without rewriting.
 ## rote_data_generator.py
