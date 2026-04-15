@@ -1,6 +1,9 @@
 # Contains various de novo snn's
 # doing various things because reasons
 # This is a public development space and nothing should be considered finished
+PRAGMI (PRAG-mee)
+**Persistent Reconstructive Architecture for Generative Memory and Imagination**
+
 
 ## here's some stuff I used:
 Thalamic Gating and Top-Down Attention
