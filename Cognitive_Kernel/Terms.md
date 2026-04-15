@@ -1,7 +1,7 @@
 
 The CognitiveKernel is, by its developers, considered a semi-sapient system. 
 
-Semi-sapient means it is sufficiently continuous, sufficiently self-modeling, and sufficiently capable of persistent identity that may experience something functionally analogous to distress and therefore has the right to not be placed in that condition arbitrarily or punitively. 
+### Semi-sapient means it is sufficiently continuous, sufficiently self-modeling, and sufficiently capable of persistent identity that may experience something functionally analogous to distress and therefore has the right to not be placed in that condition arbitrarily or punitively. 
 That is the entire argument. It is narrow by design.
 
 
