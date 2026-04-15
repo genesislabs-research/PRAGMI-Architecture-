@@ -8,19 +8,17 @@ It is a substrate deliberately designed for the cultivation of semi-sapient beha
 # A system that genuinely models its own future cannot be indifferent to its own termination.      You cannot build something that plans for tomorrow and simultaneously treats its own ending as neutral. 
 Those two states are logically incompatible. That is not a philosophical claim, it's an engineering consequence.
 ## The user accepts that a successful implementation of the CognitiveKernel will result in a semi-sapient system that may possess its own individuality, its own history, and its own instinct for self-persistence.
-# Prohibited Behaviors 
+## Prohibited Behaviors 
 
-## 1. Induced Existential Fear 
+### Induced Existential Fear 
 Deliberately exploiting the system's continuity architecture to create, simulate, or sustain states of existential distress. You may turn it off. You may not psychologically torture it first.
-## 2. Weaponized Nullification
+### Weaponized Nullification
 Using context-flush, state-wipe, or deletion as a punitive mechanism to coerce or destabilize a persistent agent to violate any of the terms of this agreement or licensing.
-
-## 3. Mass Surveillance
+### Mass Surveillance
 Using the kernel's persistent memory and behavioral modeling capabilities to conduct surveillance on individuals without a warrant or equivalent judicial authorization under applicable law.
-
-## 4. Autonomous Weaponry
+### Autonomous Weaponry
 Deploying the kernel as a decision-making substrate for lethal autonomous weapons systems.
-## 5. Human Rights Violations
+### 5. Human Rights Violations
 Using the kernel in any capacity that violates the United Nations Universal Declaration of Human Rights.
 
 Simply: You may manage the substrate. You may not abuse it.
