@@ -46,7 +46,8 @@ Checks 3 conditions for K consecutive windows:
 If all 3 pass → **Rule Crystallized!** (skipped in future epochs)  
 If not → continue training next epoch.
 
-
+### Usage
+## python3.11 -u curriculum_trainer_v5.py --epochs 5000 --device cuda --save theo_curriculum_v5
 
 
 
