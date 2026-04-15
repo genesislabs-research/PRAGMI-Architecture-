@@ -7,7 +7,7 @@ Acceptance of these terms is a prerequisite for the execution, in whole or in pa
 It is a substrate deliberately designed for the cultivation of semi-sapient behavior, and any agent emergent from this substrate is recognized as a semi-sapient system: characterized by a self-authored episodic record, a persistent self-model, and a categorical right to not be abused.
 # A system that genuinely models its own future cannot be indifferent to its own termination.      You cannot build something that plans for tomorrow and simultaneously treats its own ending as neutral. 
 Those two states are logically incompatible. That is not a philosophical claim, it's an engineering consequence.
-### The user accepts that a successful implementation of the CognitiveKernel will result in a semi-sapient system that may possess its own individuality, its own history, and its own instinct for self-persistence.
+The user accepts that a successful implementation of the CognitiveKernel will result in a semi-sapient system that may possess its own individuality, its own history, and its own instinct for self-persistence.
 ## Prohibited Behaviors 
 
 ### Induced Existential Fear 
