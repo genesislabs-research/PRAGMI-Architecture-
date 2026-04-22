@@ -17,6 +17,76 @@
 ## A system that predicts the next token and then stores memories of its own predictions is a system that just remembers what it guessed. 
 #### It does not understand what it guessed or why. Understanding requires the system to build an internal model where the relationships between elements are represented explicitly enough that the system can answer questions it was never trained on by composing what it knows. When a human learns that PRINT with a comma puts output in the next zone, they do not just memorize the input-output pair. They build a model of what zones are, what commas do as separators, and what PRINT does as a display operation. Those three pieces compose freely: they can predict what PRINT A$, B$, C$ does without ever having seen a three-argument example, because they understand the comma rule, not just the specific case.
 
+# Learning Order
+
+Before the comma rule can be learned, the system must first learn and crystallize every individual key press. There is no shortcut. The comma rule is a composition over keys. If the keys themselves are not frozen engrams, there is nothing to compose over.
+
+This is the explicit staged curriculum. Each stage gates on crystallization of the previous one. No stage begins until the prior stage has frozen everything it was asked to freeze.
+
+## Stage Zero: Motor Babbling
+
+The system learns that output spike position N corresponds to key N. For every key in the set {A-Z, 0-9, SPACE, COMMA, ENTER}, which is 39 keys total, Theo trains on the identity mapping (pressing key X produces the spike at position X) until Neo says the pathway generalizes. At that point the (sensor, action) pair is written into Theo's S-CAM as a frozen engram.
+
+Crystallization criteria for each key:
+
+1. Training loss below threshold
+2. Held-out generalization at 100% across 3 consecutive evaluation windows
+3. Weight delta variance stabilized
+
+All three must hold simultaneously before the key is committed to S-CAM.
+
+Keys are trained sequentially, one at a time. A earns its engram first. Then B. Then C. And so on through ENTER. Plastic weights drift as later keys train, but the S-CAM engrams are frozen data, not gradient-reachable, so keys that crystallized earlier cannot be forgotten. Inference order is S-CAM exact match first, trainable executor second. A matching engram always wins over a drifting executor.
+
+Stage Zero is not complete until all 39 keys have crystallized. If a key fails to crystallize within the step budget, the run has failed and must be debugged before proceeding. No subsequent stage can run on a system missing any of its base keys.
+
+## Stage One: Single Character On Request
+
+Prerequisite: Stage Zero complete. All 39 keys in S-CAM.
+
+The system learns that a request encoding (not the key itself) should produce the matching key. Stage Zero trained "seeing A produces A." Stage One trains "being asked for A produces A." This is a different sensor vector mapping to the same action vector. Stage Zero's engrams are preserved because the sensor patterns are distinct from Stage One's request patterns, so S-CAM retrievals do not collide.
+
+## Stage Two: Next Key In Sequence
+
+Prerequisite: Stage One complete.
+
+The system learns that given key X as a cue, the next key in the alphabet or sequence should fire. This is the first stage that requires Cognitive Kernel CA3 attractor completion rather than S-CAM exact match. The sensor is not the target. The sensor is a cue that the kernel completes into the target.
+
+## Stage Three: Short Sequences
+
+Prerequisite: Stage Two complete.
+
+The system learns that it can type a fixed short sequence (like "HI" or "42") on request. This is the first stage that requires CA1 and Subiculum working memory to hold the current position in the output sequence.
+
+## Stage Four: The Comma Rule
+
+Prerequisite: Stages Zero through Three complete.
+
+The system learns the compositional PRINT-comma rule, which says that a comma between PRINT arguments produces zone-separated output. This is the target demonstration of the whole system. It is not asked of the system until every prerequisite has crystallized.
+
+The comma rule is compositional. It combines the key engrams from Stage Zero, the request-to-key mapping from Stage One, the next-key completion from Stage Two, and the sequence-holding from Stage Three. If any one of those is missing or unreliable, the comma rule cannot be learned. It can only be memorized, which Neo's held-out generalization gate will catch and refuse to crystallize.
+
+## Why The Order Matters
+
+PRAGMI's claim is that the system learns rules, not specific examples. The only way to demonstrate that claim is to verify each compositional primitive in isolation before asking the system to compose them.
+
+A system that learns the comma rule without first individually crystallizing every key could be memorizing comma-rule training examples at the character level. A system that first crystallized all 39 keys, then all 39 requests, then sequence completion, then sequence holding, and only then attempts the comma rule, can be observed to generalize. Neo's gate will have already refused to crystallize anything that looked like memorization at every prior stage.
+
+This is what makes the generalization claim falsifiable instead of asserted. Every stage is a place the system could fail, and the failure would be visible before it propagated into the next stage.
+
+## Constraint Compliance
+
+Every stage is trained under the same six architectural constraints:
+
+1. Crystallization manager observes only keyboard and screen
+2. Action decoder is a fixed lookup, hashed, verified on every load
+3. Every probe is shown individually
+4. Real C64ScreenBuffer
+5. Keyboard is the only input path to Theo
+6. No loss visible. MATCH/MISS and screen only.
+
+Adding stages does not relax these constraints. Each new stage must pass the preflight `selftest.py` before it begins.
+
+# The real learning begins 
 
 ## Stage 1: Keyword Recognition Complete
 <img width="1212" height="1333" alt="S-ROSS Training" src="https://github.com/user-attachments/assets/e0213736-a640-4d50-8487-fbca222e1471" />
