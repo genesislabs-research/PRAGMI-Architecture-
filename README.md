@@ -1,5 +1,5 @@
 # Contains various de novo snn's
-# doing various things because reasons
+# doing various things as a proof of concept 
 # This is a public development space and nothing should be considered finished
 ## PRAGMI (PRAG-mee)
 ### Persistent Reconstructive Architecture
